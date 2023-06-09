@@ -18,7 +18,8 @@ const Register = () => {
             .then( () =>{
                 const setUser = {
                     name: data.name,
-                    email: data.email
+                    email: data.email,
+                    image: data.photo
                 }
                 axios.post('http://localhost:5000/users' , setUser)
                 .then(data =>{

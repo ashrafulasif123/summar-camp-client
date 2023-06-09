@@ -5,7 +5,7 @@ const useAxiosProtected = () => {
         baseURL: 'http://localhost:5000/'
     })
     axiosProtect.interceptors.request.use(request => {
-        const token = localStorage.getItem('access-token')
+        const token = localStorage.getItem('token-receive')
         request.headers.Authorization = `bearer ${token}`
         return request;
     })
