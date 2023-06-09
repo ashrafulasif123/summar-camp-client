@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
     const {createUser, updateUserProfile} = useContext(AuthContext)
@@ -15,17 +16,32 @@ const Register = () => {
         .then( () =>{
             updateUserProfile(data.name, data.photo)
             .then( () =>{
-                Swal.fire({
-                    position: 'middle',
-                    icon: 'success',
-                    title: 'You have Successfully registered',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+                const setUser = {
+                    name: data.name,
+                    email: data.email
+                }
+                axios.post('http://localhost:5000/users' , setUser)
+                .then(data =>{
+                    // console.log(data)
+                    Swal.fire({
+                        position: 'middle',
+                        icon: 'success',
+                        title: 'You have Successfully registered',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                })
+                
             })
          })
         .catch(error =>{
-            console.log(error.message)
+            Swal.fire({
+                position: 'middle',
+                icon: 'error',
+                title: 'email-already-in-use',
+                showConfirmButton: false,
+                timer: 1500
+              })
         })
        
     };

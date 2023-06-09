@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import logimg from '../../../assets/images/register.jpg'
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
+    const [showPassword, setShowPassword] = useState(true);
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
@@ -36,14 +38,21 @@ const Login = () => {
     const handleGoogleLogIn = () => {
         googleSignIn()
             .then((result) => {
-                Swal.fire({
-                    position: 'middle',
-                    icon: 'success',
-                    title: 'You have Successfully Login',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                const loggedUser = result.user;
+                const setUser = {
+                    name: loggedUser.displayName,
+                    email: loggedUser.email
+                }
+                axios.post('http://localhost:5000/users', setUser)
+                    .then(data => {
+                        console.log(data)
+
+                    })
             })
+    }
+
+    const handlePasswordType = () => {
+        setShowPassword(!showPassword)
     }
 
     return (
@@ -67,7 +76,10 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" {...register("password", { required: true })} placeholder="Password" className="input input-bordered" />
+                                <input type={showPassword ? 'password' : 'text'} {...register("password", { required: true })} placeholder="Password" className="input input-bordered" />
+                                <div className='cursor-pointer mt-2' onClick={handlePasswordType}>
+                                    <p>{showPassword ? 'Show Password' : 'Hide Password'}</p>
+                                </div>
                             </div>
                             <div className="form-control mt-6">
                                 {/* <button type='submit' className="btn btn-success">Register</button> */}
