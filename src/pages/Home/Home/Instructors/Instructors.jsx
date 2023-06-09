@@ -4,43 +4,42 @@ import useTotalInstructor from '../../../../hooks/useTotalInstructor';
 
 
 const Instructors = () => {
-    const {instructor} = useTotalInstructor()
-   
+    const { instructor } = useTotalInstructor()
+
     return (
         <div>
+            <h2 className='text-center text-3xl my-5 font-extrabold text-success'>All Instructors</h2>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table w-3/4 mx-auto mt-4">
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                            <th></th>
+                            <th className='text-center text-lg border-green-600 border-2'>Serial</th>
+                            <th className='text-center text-lg border-green-600 border-2'>Image</th>
+                            <th className='text-center text-lg border-green-600 border-2'>Instructor Name</th>
+                            <th className='text-center text-lg border-green-600 border-2'>Email</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            instructor?.map((inst) => (
+                            instructor?.map((inst, index) => (
                                 <tr>
-                                    <td>
+                                    <td className='border border-success text-lg bg-green-100 text-center'>
+                                        {index + 1}
+                                    </td>
+                                    <td className='border border-success text-lg bg-green-100 text-center'>
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-12 h-12">
-                                                    <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                                    <img src={inst.image} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                    <td className='border border-success text-lg bg-green-100 text-center'>
+                                        {inst.name}
                                     </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
-                                    </th>
+                                    <td className='border border-success text-lg bg-green-100 text-center'>{inst.email}</td>
                                 </tr>
                             )
 
