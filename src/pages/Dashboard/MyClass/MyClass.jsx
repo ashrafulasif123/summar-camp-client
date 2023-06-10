@@ -37,7 +37,7 @@ const MyClass = () => {
                                     <td className='border border-success text-md'>{instclass?.enrolledstudent}</td>
                                     <td className='border border-success text-md'>{instclass?.status}</td>
                                     <td className='border border-success text-md'>{instclass?.feedback}</td>
-                                    <td className='border border-success text-md'><button className='btn btn-success'>Update</button></td>
+                                    <td className='border border-success text-md'><button className='btn btn-success btn-sm'>Update</button></td>
                                 </tr>
                             )
                         }
