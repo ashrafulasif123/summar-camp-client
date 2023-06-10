@@ -81,7 +81,7 @@ const ManageClasses = () => {
                                     <td className='border border-success text-md flex flex-row gap-1'>
                                         <button onClick={() => handleApproved(instclass?._id)} disabled={instclass?.status === 'approved' || instclass?.status === 'denied'} className='btn btn-success btn-sm text-xs'>Approved</button>
                                         <button onClick={() => handleDenied(instclass?._id)} disabled={instclass?.status === 'approved' || instclass?.status === 'denied'} className='btn btn-info btn-sm text-xs'>Deny </button>
-                                        <Link to={`/dashboard/feedback/${instclass?._id}`}><button disabled={instclass?.status === 'approved'} className='btn btn-warning btn-sm text-xs' >feedback</button></Link>
+                                        <Link to={`/dashboard/feedback/${instclass?._id}`}><button disabled={instclass?.status === 'approved' || instclass?.status === 'pending'} className='btn btn-warning btn-sm text-xs' >feedback</button></Link>
                                     </td>
                                 </tr>
                             )

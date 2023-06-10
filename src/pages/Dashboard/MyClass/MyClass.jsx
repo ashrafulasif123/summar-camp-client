@@ -27,7 +27,7 @@ const MyClass = () => {
                         {/* row 1 */}
                         {
                             instructorclass?.map((instclass, index) =>
-                                <tr>
+                                <tr key={instclass?._id}>
                                     <th className='border border-success text-md'>{index + 1}</th>
                                     <td className='border border-success text-md'>{instclass?.classname}</td>
                                     <td className='border border-success text-md'>{instclass?.instructor}</td>
