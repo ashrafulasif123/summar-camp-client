@@ -9,7 +9,7 @@ const useAllClass = () =>{
     // const {user} = useContext(AuthContext)
     const [axiosProtect] = useAxiosProtected()
 
-    const { data : adminclass } = useQuery({
+    const { data : adminclass, refetch } = useQuery({
         queryKey: ['adminclasses'],
         queryFn: async () =>{
             const res = await axiosProtect.get('/users/admin')
@@ -18,6 +18,6 @@ const useAllClass = () =>{
         
       })
      
-      return {adminclass}
+      return {adminclass, refetch}
 }
 export default useAllClass

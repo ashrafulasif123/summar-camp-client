@@ -1,12 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAllClass from '../../../hooks/useAllClass';
+import useAxiosProtected from '../../../hooks/useAxiosProtected';
+// import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ManageClasses = () => {
+    const { adminclass, refetch } = useAllClass()
+    const [axiosProtect] = useAxiosProtected()
+    // console.log(adminclass)
+    const handleApproved = _id => {
 
-    const { adminclass } = useAllClass()
-    console.log(adminclass)
+        axiosProtect.patch(`/users/admin/${_id}`)
+            .then(data => {
+                console.log(data)
+
+                if (data.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        position: 'middle',
+                        icon: 'success',
+                        title: 'This Class is Approved',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                }
+            })
+    }
+    const handleDenied = _id => {
+        axiosProtect.patch(`/users/administrator/${_id}`)
+            .then(data => {
+                console.log(data)
+
+                if (data.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        position: 'middle',
+                        icon: 'success',
+                        title: 'This Class is Denied',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                }
+            })
+    }
+    
     return (
         <>
+
             <h2 className='font-extrabold text-success text-3xl text-center p-4'>Manage Classes</h2>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -21,7 +62,6 @@ const ManageClasses = () => {
                             <th className='border border-success text- font-extrabold text-center'>Available <br /> seats</th>
                             <th className='border border-success text- font-extrabold text-center'>Price</th>
                             <th className='border border-success text- font-extrabold text-center'>Status</th>
-                            <th className='border border-success text- font-extrabold text-center'>Feedback </th>
                             <th className='border border-success text- font-extrabold text-center'>Action</th>
                         </tr>
                     </thead>
@@ -38,9 +78,10 @@ const ManageClasses = () => {
                                     <td className='border border-success text-md'>{instclass?.seats}</td>
                                     <td className='border border-success text-md'>{instclass?.price}</td>
                                     <td className='border border-success text-md'>{instclass?.status}</td>
-                                    <td className='border border-success text-md'>{instclass?.feedback}</td>
-                                    <td className='border border-success text-md'>
-                                        <button className='btn btn-success'>Update</button>
+                                    <td className='border border-success text-md flex flex-row gap-1'>
+                                        <button onClick={() => handleApproved(instclass?._id)} disabled={instclass?.status === 'approved' || instclass?.status === 'denied'} className='btn btn-success btn-sm text-xs'>Approved</button>
+                                        <button onClick={() => handleDenied(instclass?._id)} disabled={instclass?.status === 'approved' || instclass?.status === 'denied'} className='btn btn-info btn-sm text-xs'>Deny </button>
+                                        <Link to={`/dashboard/feedback/${instclass?._id}`}><button disabled={instclass?.status === 'approved'} className='btn btn-warning btn-sm text-xs' >feedback</button></Link>
                                     </td>
                                 </tr>
                             )
