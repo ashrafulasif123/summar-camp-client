@@ -2,25 +2,26 @@ import { useContext } from "react"
 
 import useAxiosProtected from "./useAxiosProtected"
 import { AuthContext } from "../Provider/AuthProvider"
-import axios from "axios"
+
 import { useQuery } from "@tanstack/react-query"
 
-const useTotalInstructor = () =>{
-    const {loading} = useContext(AuthContext)
+const useClass = () =>{
+    const {user} = useContext(AuthContext)
     const [axiosProtect] = useAxiosProtected()
+
     
    
     
 
-    const { data : instructor } = useQuery({
-        queryKey: ['totalinstructor'],
+    const { data : instructorclass } = useQuery({
+        queryKey: ['instructorclass', user?.email],
         queryFn: async () =>{
-            const res = await axiosProtect.get('/users/totalinstructor?role=instructor')
+            const res = await axiosProtect.get(`/users/instractor/class?email=${user?.email}`)
             return res;
         },
         
       })
      
-      return {instructor}
+      return {instructorclass}
 }
-export default useTotalInstructor
+export default useClass

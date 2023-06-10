@@ -5,21 +5,21 @@ import { useQuery } from "@tanstack/react-query"
 import useAxiosProtected from "./useAxiosProtected"
 // import axios from "axios"
 
-const useInstructor = () =>{
+const useAdmin = () =>{
     const {user, loading} = useContext(AuthContext)
     const [axiosProtect] = useAxiosProtected()
    
     
 
-    const { refetch, data : isInstructor, isLoading: isInstructorLoading } = useQuery({
-        queryKey: ['isInstructor', user?.email],
+    const { refetch, data : isAdmin, isLoading: isAdminLoading } = useQuery({
+        queryKey: ['isAdmin', user?.email],
         enabled: !loading,
         queryFn: async () =>{
-            const res = await axiosProtect.get(`/users/instructor/${user?.email}`)
-            return res.instructor;
+            const res = await axiosProtect.get(`/users/admin/${user?.email}`)
+            return res.admin;
         },
         
       })
-      return [isInstructor, isInstructorLoading, refetch]
+      return [isAdmin, isAdminLoading, refetch]
 }
-export default useInstructor
+export default useAdmin

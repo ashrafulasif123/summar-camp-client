@@ -45,8 +45,6 @@ const Login = () => {
                 }
                 axios.post('http://localhost:5000/users', setUser)
                     .then(data => {
-                        console.log(data)
-
                     })
             })
     }

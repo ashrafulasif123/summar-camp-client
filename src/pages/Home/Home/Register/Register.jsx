@@ -12,6 +12,16 @@ const Register = () => {
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
+        const confirm = data.confirm
+        if(password !== confirm){
+            return Swal.fire({
+                position: 'middle',
+                icon: 'error',
+                title: 'Password Not Matched',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }
         createUser(email, password)
         .then( () =>{
             updateUserProfile(data.name, data.photo)
@@ -94,7 +104,7 @@ const Register = () => {
                            <label className="label">
                                <span className="label-text">Confirm Password</span>
                            </label>
-                           <input type="text" placeholder="Coanfirm Password" className="input input-bordered" />
+                           <input type="text" {...register("confirm", { required: true })} placeholder="Confirm Password" className="input input-bordered" />
                        </div>
                        <div className="form-control">
                            <label className="label">
