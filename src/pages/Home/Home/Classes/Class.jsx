@@ -4,14 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAdmin from '../../../../hooks/useAdmin';
 import useInstructor from '../../../../hooks/useInstructor';
+import useAxiosProtected from '../../../../hooks/useAxiosProtected';
 
 const Class = ({ clas }) => {
     const { user } = useContext(AuthContext)
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
+    const [axiosProtect] = useAxiosProtected()
     const { classname, instructor, email, seats, price, image, enrolledstudent, _id } = clas;
     const navigate = useNavigate()
-    const handleCourse = id => {
+    const handleCourse = selectclass => {
         if (!user?.email) {
             Swal.fire({
                 position: 'middle',
@@ -22,10 +24,24 @@ const Class = ({ clas }) => {
             })
             return navigate('/login')
         }
-        console.log('user successfully login')
+        const classCart = {
+            _id, classname, instructor, price, seats
+        }
+        axiosProtect.post('http://localhost:5000/classcart', classCart)
+        .then(data =>{
+            if(data.insertedId){
+                Swal.fire({
+                    position: 'middle',
+                    icon: 'success',
+                    title: 'You have Successfully added',
+                    showConfirmButton: false,
+                    timer: 2500
+                }) 
+            }
+        })
+        
     }
-    const bgr = 'bg-red-100'
-    const bgb = 'bg-base-100'
+    
     return (
         
         <div className= {seats === 0 ? 'bg-red-400 text-white card shadow-xl' : 'bg-base-100 card shadow-xl'} >
@@ -38,7 +54,7 @@ const Class = ({ clas }) => {
                 <p><span className='font-semibold'>Available Seats:</span> {seats}</p>
                 <p><span className='font-semibold'>Price: </span>${price}</p>
                 <div className="card-actions">
-                    <button onClick={() => handleCourse(_id)} disabled={seats === 0 || isAdmin || isInstructor} className="btn btn-success">Select Course</button>
+                    <button onClick={() => handleCourse(clas)} disabled={seats === 0 || isAdmin || isInstructor} className="btn btn-success">Select Course</button>
                 </div>
             </div>
         </div>
