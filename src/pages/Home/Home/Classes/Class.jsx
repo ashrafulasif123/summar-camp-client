@@ -25,7 +25,7 @@ const Class = ({ clas }) => {
             return navigate('/login')
         }
         const classCart = {
-            _id, classname, instructor, price, seats
+            classname, instructor, price, seats, useremail: user?.email
         }
         axiosProtect.post('http://localhost:5000/classcart', classCart)
         .then(data =>{
@@ -34,6 +34,15 @@ const Class = ({ clas }) => {
                     position: 'middle',
                     icon: 'success',
                     title: 'You have Successfully added',
+                    showConfirmButton: false,
+                    timer: 2500
+                }) 
+            }
+            else{
+                Swal.fire({
+                    position: 'middle',
+                    icon: 'error',
+                    title: 'This Class Already exist',
                     showConfirmButton: false,
                     timer: 2500
                 }) 
@@ -54,7 +63,7 @@ const Class = ({ clas }) => {
                 <p><span className='font-semibold'>Available Seats:</span> {seats}</p>
                 <p><span className='font-semibold'>Price: </span>${price}</p>
                 <div className="card-actions">
-                    <button onClick={() => handleCourse(clas)} disabled={seats === 0 || isAdmin || isInstructor} className="btn btn-success">Select Course</button>
+                    <button onClick={() => handleCourse(clas)} disabled={seats === 0 || isAdmin || isInstructor} className="btn btn-success">Select Class</button>
                 </div>
             </div>
         </div>
