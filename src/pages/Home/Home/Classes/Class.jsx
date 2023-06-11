@@ -2,13 +2,17 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAdmin from '../../../../hooks/useAdmin';
+import useInstructor from '../../../../hooks/useInstructor';
 
 const Class = ({ clas }) => {
-    const {user} = useContext(AuthContext) 
-    const {classname, instructor, email, seats, price, image, enrolledstudent, _id} = clas;
+    const { user } = useContext(AuthContext)
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
+    const { classname, instructor, email, seats, price, image, enrolledstudent, _id } = clas;
     const navigate = useNavigate()
-    const handleCourse = id =>{
-        if(!user?.email){
+    const handleCourse = id => {
+        if (!user?.email) {
             Swal.fire({
                 position: 'middle',
                 icon: 'error',
@@ -20,9 +24,11 @@ const Class = ({ clas }) => {
         }
         console.log('user successfully login')
     }
+    const bgr = 'bg-red-100'
+    const bgb = 'bg-base-100'
     return (
-        <div className="card bg-base-100 shadow-xl">
-            
+        
+        <div className= {seats === 0 ? 'bg-red-400 text-white card shadow-xl' : 'bg-base-100 card shadow-xl'} >
             <figure className="px-10 pt-10">
                 <img src={image} alt="Shoes" className="rounded-xl" />
             </figure>
@@ -32,7 +38,7 @@ const Class = ({ clas }) => {
                 <p><span className='font-semibold'>Available Seats:</span> {seats}</p>
                 <p><span className='font-semibold'>Price: </span>${price}</p>
                 <div className="card-actions">
-                    <button onClick={ () => handleCourse(_id)} disabled={seats === 0} className="btn btn-success">Select Course</button>
+                    <button onClick={() => handleCourse(_id)} disabled={seats === 0 || isAdmin || isInstructor} className="btn btn-success">Select Course</button>
                 </div>
             </div>
         </div>

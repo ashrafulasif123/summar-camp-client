@@ -15,7 +15,7 @@ const Classes = () => {
     })
 
     return (
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-7xl mx-auto mt-4'>
             <div className='grid md:grid-cols-4 gap-4'>
                 {
                     classes.map(clas => <Class key={clas?._id} clas={clas}></Class>)
