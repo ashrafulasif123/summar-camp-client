@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -35,6 +36,7 @@ const NavMenu = () => {
     </>
     return (
         <div className="navbar bg-success text-white font-semibold">
+            
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -44,7 +46,7 @@ const NavMenu = () => {
                         {navitem}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Sports academies</a>
+                <a className="btn btn-ghost normal-case text-xl">Sports Exut</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

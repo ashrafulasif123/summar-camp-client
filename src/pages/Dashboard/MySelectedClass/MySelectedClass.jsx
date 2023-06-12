@@ -4,6 +4,7 @@ import useAxiosProtected from '../../../hooks/useAxiosProtected';
 import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const MySelectedClass = () => {
     const { cartclasses, refetch } = useCart()
@@ -48,6 +49,11 @@ const MySelectedClass = () => {
     return (
         <div>
             <>
+            <Helmet>
+                <title>
+                    Selected Class | Sports Exut
+                </title>
+            </Helmet>
                 <div className='text-center'>
                     <h2 className='font-extrabold text-success text-3xl text-center p-4'>Total Price: ${totalPrice} </h2>
                     <Link to='/dashboard/pay'><button className='btn btn-primary'>Pay</button></Link>

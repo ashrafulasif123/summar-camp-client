@@ -4,6 +4,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import useAxiosProtected from '../../../hooks/useAxiosProtected';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -41,6 +42,11 @@ const AddaClass = () => {
     return (
         <>
             <h2 className='text-center text-3xl font-semibold py-6 bg-slate-300 w-full'>Add a Class</h2>
+            <Helmet>
+                <title>
+                    Add a Class | Sports Exut
+                </title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">

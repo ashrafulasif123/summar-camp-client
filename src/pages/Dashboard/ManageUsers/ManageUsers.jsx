@@ -1,6 +1,7 @@
 import React from 'react';
 import useUsers from '../../../hooks/useUsers';
 import useAxiosProtected from '../../../hooks/useAxiosProtected';
+import { Helmet } from 'react-helmet-async';
 
 const ManageUsers = () => {
     const { users, refetch } = useUsers()
@@ -43,7 +44,11 @@ const ManageUsers = () => {
     return (
         <div>
             <>
-
+            <Helmet>
+                <title>
+                    Manage User | Sports Exut
+                </title>
+            </Helmet>
                 <h2 className='font-extrabold text-success text-3xl text-center p-4'>Manage Classes: {users.length}</h2>
                 <div className="overflow-x-auto">
                     <table className="table">

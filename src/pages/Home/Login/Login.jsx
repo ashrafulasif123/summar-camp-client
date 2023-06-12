@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext)
@@ -56,6 +57,11 @@ const Login = () => {
     return (
         <>
             <h2 className='text-center text-3xl font-semibold py-6 bg-slate-300'>Login</h2>
+            <Helmet>
+                <title>
+                    Login | Sports Exut
+                </title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <h2>Login</h2>
                 <div className="hero-content flex-col lg:flex-row">

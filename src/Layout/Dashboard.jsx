@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import useInstructor from '../hooks/useInstructor';
 import useAdmin from '../hooks/useAdmin';
+import { Helmet } from 'react-helmet-async';
 
 const Dashboard = () => {
     const [isInstructor] = useInstructor()
@@ -9,6 +10,9 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin()
     return (
         <div className="drawer lg:drawer-open">
+            <Helmet>
+                <title>Dashboard | Sports Exut</title>
+            </Helmet>
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col justify-center">
                 <Outlet></Outlet>

@@ -4,6 +4,7 @@ import useAxiosProtected from '../../../hooks/useAxiosProtected';
 // import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const ManageClasses = () => {
     const { adminclass, refetch } = useAllClass()
@@ -47,7 +48,11 @@ const ManageClasses = () => {
     
     return (
         <>
-
+            <Helmet>
+                <title>
+                    Manage Classes | Sports Exut
+                </title>
+            </Helmet>
             <h2 className='font-extrabold text-success text-3xl text-center p-4'>Manage Classes</h2>
             <div className="overflow-x-auto">
                 <table className="table">

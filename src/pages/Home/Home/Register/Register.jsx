@@ -5,6 +5,7 @@ import { AuthContext } from '../../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const {createUser, updateUserProfile} = useContext(AuthContext)
@@ -58,6 +59,11 @@ const Register = () => {
     };
     return (
         <>
+        <Helmet>
+                <title>
+                    Register | Sports Exut
+                </title>
+            </Helmet>
         <h2 className='text-center text-3xl font-semibold py-6 bg-slate-300'>Ragistration</h2>
          <div className="hero min-h-screen bg-base-200">
          

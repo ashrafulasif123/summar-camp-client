@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useAxiosProtected from '../../../hooks/useAxiosProtected';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const Feedback = () => {
     const {id} = useParams()
@@ -29,6 +30,11 @@ const Feedback = () => {
     
     return (
         <div className='w-full text-center'>
+            <Helmet>
+                <title>
+                    Feedback | Sports Exut
+                </title>
+            </Helmet>
             <h2 className='text-3xl my-3 font-bold text-success'>Admins Feedback</h2>
             <form onSubmit={handleSubmit} className=''>
                 <textarea required name='feedback' placeholder="FeedBack" className="textarea textarea-bordered w-1/2 textarea-lg h-44 mb-4" ></textarea> <br />

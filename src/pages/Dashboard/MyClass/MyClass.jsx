@@ -1,10 +1,16 @@
 import React from 'react';
 import useClass from '../../../hooks/useClass';
+import { Helmet } from 'react-helmet-async';
 
 const MyClass = () => {
     const { instructorclass } = useClass()
     return (
         <>
+        <Helmet>
+                <title>
+                    My Class | Sports Exut
+                </title>
+            </Helmet>
             <h2 className='font-extrabold text-success text-3xl text-center p-4'>Instructor Class</h2>
             <div className="overflow-x-auto">
                 <table className="table">

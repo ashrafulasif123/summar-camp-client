@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useTotalInstructor from '../../../../hooks/useTotalInstructor';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -9,6 +10,11 @@ const Instructors = () => {
     return (
         <div>
             <h2 className='text-center text-3xl my-5 font-extrabold text-success'>All Instructors</h2>
+            <Helmet>
+                <title>
+                    Instructor | Sports Exut
+                </title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table w-3/4 mx-auto mt-4">
                     {/* head */}
