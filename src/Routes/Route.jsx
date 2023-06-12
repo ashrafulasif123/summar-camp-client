@@ -13,6 +13,8 @@ import MyEnrolledClass from "../pages/Dashboard/MyEnrolledClass/MyEnrolledClass"
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import Feedback from "../pages/Dashboard/ManageClasses/Feedback";
+import Payment from "../pages/Dashboard/Payment/Payment";
+
 
 
 
@@ -64,6 +66,10 @@ const router = createBrowserRouter([
             {
                 path: 'myenrolledclass',
                 element: <MyEnrolledClass></MyEnrolledClass>
+            },
+            {
+                path: 'pay',
+                element: <Payment></Payment>    
             },
             // Admin
             {
