@@ -2,13 +2,18 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
-import { Helmet } from 'react-helmet-async';
+
 
 
 
 const NavMenu = () => {
 
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut, loading } = useContext(AuthContext)
+    if(loading){
+        return <div className='text-center'>
+            <span className="loading loading-bars loading-lg"></span>
+        </div>
+    }
     const handleLogOut = () => {
         logOut()
             .then(() => {

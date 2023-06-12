@@ -29,7 +29,7 @@ const Instructors = () => {
                     <tbody>
                         {
                             instructor?.map((inst, index) => (
-                                <tr>
+                                <tr key={inst?._id}>
                                     <td className='border border-success text-lg bg-green-100 text-center'>
                                         {index + 1}
                                     </td>

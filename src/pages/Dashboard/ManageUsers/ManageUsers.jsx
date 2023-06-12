@@ -49,7 +49,7 @@ const ManageUsers = () => {
                     Manage User | Sports Exut
                 </title>
             </Helmet>
-                <h2 className='font-extrabold text-success text-3xl text-center p-4'>Manage Classes: {users.length}</h2>
+                <h2 className='font-extrabold text-success text-3xl text-center p-4'>Manage Users</h2>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 
@@ -12,6 +12,9 @@ const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
     const [showPassword, setShowPassword] = useState(true);
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location?.state?.from?.pathname || '/';
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
@@ -24,6 +27,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                navigate(from, {replace: true})
             })
             .catch((error) => {
                 Swal.fire({
@@ -46,6 +50,14 @@ const Login = () => {
                 }
                 axios.post('http://localhost:5000/users', setUser)
                     .then(data => {
+                        Swal.fire({
+                            position: 'middle',
+                            icon: 'success',
+                            title: 'You have Successfully Login',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, {replace: true})
                     })
             })
     }

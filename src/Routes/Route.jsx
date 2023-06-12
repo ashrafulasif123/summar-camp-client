@@ -14,6 +14,10 @@ import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import Feedback from "../pages/Dashboard/ManageClasses/Feedback";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import StudentRoute from "./StudentRoute";
 
 
 
@@ -47,25 +51,25 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             // Instructor
             {
                 path: 'addclass',
-                element: <AddaClass></AddaClass>
+                element: <InstructorRoute><AddaClass></AddaClass></InstructorRoute>
             },
             {
                 path: 'myclass',
-                element: <MyClass></MyClass>
+                element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
             },
             // Student
             {
                 path:'myselectedclass',
-                element: <MySelectedClass></MySelectedClass>
+                element: <StudentRoute><MySelectedClass></MySelectedClass></StudentRoute>
             },
             {
                 path: 'myenrolledclass',
-                element: <MyEnrolledClass></MyEnrolledClass>
+                element: <StudentRoute><MyEnrolledClass></MyEnrolledClass></StudentRoute>
             },
             {
                 path: 'pay',
@@ -74,15 +78,15 @@ const router = createBrowserRouter([
             // Admin
             {
                 path: 'manageclass',
-                element: <ManageClasses></ManageClasses>
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             },
             {
                 path: 'manageusers',
-                element: <ManageUsers></ManageUsers>
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             },
             {
                 path: 'feedback/:id',
-                element: <Feedback></Feedback>
+                element: <AdminRoute><Feedback></Feedback></AdminRoute>
             }
         ]
     }
