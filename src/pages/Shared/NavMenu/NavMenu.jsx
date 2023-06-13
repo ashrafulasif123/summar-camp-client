@@ -20,7 +20,7 @@ const NavMenu = () => {
                 Swal.fire({
                     position: 'middle',
                     icon: 'success',
-                    title: 'You have Successfully registered',
+                    title: 'You have Successfully Logout',
                     showConfirmButton: false,
                     timer: 1500
                 })
