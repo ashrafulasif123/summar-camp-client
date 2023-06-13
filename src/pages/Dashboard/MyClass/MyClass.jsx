@@ -26,7 +26,6 @@ const MyClass = () => {
                             <th className='border border-success text-center font-extrabold'>Enrolled <br /> Student</th>
                             <th className='border border-success text-center font-extrabold'>Status</th>
                             <th className='border border-success text-center font-extrabold'>Feedback </th>
-                            <th className='border border-success text-center font-extrabold'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +42,6 @@ const MyClass = () => {
                                     <td className='border border-success text-md'>{instclass?.enrolledstudent}</td>
                                     <td className='border border-success text-md'>{instclass?.status}</td>
                                     <td className='border border-success text-md'>{instclass?.feedback?.feedBk}</td>
-                                    <td className='border border-success text-md'><button className='btn btn-success btn-sm'>Update</button></td>
                                 </tr>
                             )
                         }
