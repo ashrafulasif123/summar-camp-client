@@ -19,6 +19,7 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import StudentRoute from "./StudentRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import PaymentHistory from "../pages/Dashboard/PaymentHIstory/PaymentHistory";
 
 
 
@@ -75,7 +76,11 @@ const router = createBrowserRouter([
             },
             {
                 path: 'pay',
-                element: <Payment></Payment>    
+                element: <StudentRoute><Payment></Payment> </StudentRoute>   
+            },
+            {
+                path: 'payment',
+                element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
             },
             // Admin
             {

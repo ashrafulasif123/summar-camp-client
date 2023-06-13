@@ -29,23 +29,7 @@ const MySelectedClass = () => {
                 }
             })
     }
-    // const handleAdmin = _id => {
-    //     axiosProtect.patch(`/users/adminrole/${_id}`)
-    //         .then(data => {
-    //             console.log(data)
-
-    //             if (data.modifiedCount > 0) {
-    //                 refetch()
-    //                 Swal.fire({
-    //                     position: 'middle',
-    //                     icon: 'success',
-    //                     title: 'Selected User is Admin',
-    //                     showConfirmButton: false,
-    //                     timer: 2500
-    //                 })
-    //             }
-    //         })
-    // }
+    
     return (
         <div>
             <>

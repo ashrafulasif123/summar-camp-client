@@ -30,7 +30,7 @@ const NavMenu = () => {
         <li><Link className='text-lg' to='/'>Home</Link></li>
         <li><Link className='text-lg' to='/instructors'>Instructors</Link></li>
         <li><Link className='text-lg' to='/classes'>Classes</Link></li>
-        <li><Link className='text-lg' to='/dashboard'>Dashboard</Link></li>
+        <li><Link className='text-lg' to='/dashboard'>All Dashboard</Link></li>
         <li><Link className='text-lg' to='/register'>Register </Link></li>
         {
             user

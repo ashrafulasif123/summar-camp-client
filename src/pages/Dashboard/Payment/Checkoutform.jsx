@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 
 const Checkoutform = ({ price, cartclasses }) => {
+    console.log(cartclasses)
     const stripe = useStripe()
     const elements = useElements()
     const { user } = useContext(AuthContext)
@@ -71,12 +72,14 @@ const Checkoutform = ({ price, cartclasses }) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
-                data: new Date(),
+                date: new Date().toISOString().substr(0, 10),
                 status: 'servicepending',
                 quantity: cartclasses?.length,
+                classId : cartclasses?.map(selectedclass => selectedclass.classId),
                 selectedclasses: cartclasses?.map(selectedclass => selectedclass._id),
                 selectedclassesname: cartclasses?.map(selectedclass => selectedclass.classname)
             }
+            console.log(payment)
             axiosProtect.post('/payments', payment)
                 .then(res => {
 

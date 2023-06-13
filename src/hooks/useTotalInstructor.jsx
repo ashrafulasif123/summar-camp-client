@@ -4,10 +4,6 @@ import { useQuery } from "@tanstack/react-query"
 
 const useTotalInstructor = () =>{
     
-    
-   
-    
-
     const { data : instructor } = useQuery({
         queryKey: ['totalinstructor'],
         queryFn: async () =>{

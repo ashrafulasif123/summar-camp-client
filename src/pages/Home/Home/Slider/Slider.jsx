@@ -1,8 +1,12 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Slider = () => {
     return (
-        <div className="carousel w-full">
+        <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.8 }} className="carousel w-full">
             <div id="slide1" className="carousel-item relative w-full">
                 <img src='https://images.pexels.com/photos/9828007/pexels-photo-9828007.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' className='w-full max-h-screen'/>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 z-20">
@@ -47,7 +51,7 @@ const Slider = () => {
                     <p className='w-1/2 text-red-600 text-2xl font-semibold mt-5'>Badminton is a popular racket sport played worldwide. It is a fast-paced game that can be played in singles (one player per side) or doubles (two players per side). The objective is to hit the shuttlecock over the net so that it lands in the opponent's court and score points</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

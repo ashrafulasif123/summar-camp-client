@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import useAxiosProtected from '../../../hooks/useAxiosProtected';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
 
 
 
@@ -21,22 +22,22 @@ const AddaClass = () => {
         const status = data.status
         const image = data.image
         const enrolledstudent = 0
-        
+
         const summarClass = {
-            classname, instructor, email, seats, price, status, image, enrolledstudent  
+            classname, instructor, email, seats, price, status, image, enrolledstudent
         }
         axiosProtect.post('/users/instructor/addclass', summarClass)
-        .then(data =>{
-            if(data.insertedId){
-                Swal.fire({
-                    position: 'middle',
-                    icon: 'success',
-                    title: 'You have Successfully Add Class',
-                    showConfirmButton: false,
-                    timer: 2500
-                  })
-            }
-        })
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'middle',
+                        icon: 'success',
+                        title: 'You have Successfully Add Class',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                }
+            })
 
     };
     return (
@@ -47,7 +48,10 @@ const AddaClass = () => {
                     Add a Class | Sports Exut
                 </title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
+            <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.8 }} className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-0">
@@ -114,7 +118,7 @@ const AddaClass = () => {
                         </form>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </>
 
     );
