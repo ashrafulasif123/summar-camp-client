@@ -28,7 +28,7 @@ const Class = ({ clas }) => {
         const classCart = {
             classId: _id, classname, instructor, price, seats, useremail: user?.email, enrolledstudent
         }
-        axiosProtect.post('http://localhost:5000/classcart', classCart)
+        axiosProtect.post('https://summer-camp-server-six-iota.vercel.app/classcart', classCart)
             .then(data => {
                 if (data.insertedId) {
                     Swal.fire({

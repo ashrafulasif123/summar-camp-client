@@ -7,7 +7,7 @@ const useTotalInstructor = () =>{
     const { data : instructor } = useQuery({
         queryKey: ['totalinstructor'],
         queryFn: async () =>{
-            const res = await axios.get('http://localhost:5000/users/totalinstructor?role=instructor')
+            const res = await axios.get('https://summer-camp-server-six-iota.vercel.app/users/totalinstructor?role=instructor')
             return res.data;
         },
         

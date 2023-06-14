@@ -2,7 +2,7 @@ import axios from 'axios';
 const useAxiosProtected = () => {
 
     const axiosProtect = axios.create({
-        baseURL: 'http://localhost:5000/'
+        baseURL: 'https://summer-camp-server-six-iota.vercel.app/'
     })
     axiosProtect.interceptors.request.use(request => {
         const token = localStorage.getItem('token-receive')
@@ -20,3 +20,4 @@ const useAxiosProtected = () => {
 };
 
 export default useAxiosProtected;
+

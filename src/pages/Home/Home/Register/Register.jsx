@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const {createUser, updateUserProfile} = useContext(AuthContext)
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
@@ -32,9 +32,10 @@ const Register = () => {
                     email: data.email,
                     image: data.photo
                 }
-                axios.post('http://localhost:5000/users' , setUser)
+                axios.post('https://summer-camp-server-six-iota.vercel.app/users' , setUser)
                 .then(data =>{
                     // console.log(data)
+                    reset()
                     Swal.fire({
                         position: 'middle',
                         icon: 'success',
@@ -92,7 +93,7 @@ const Register = () => {
                            <label className="label">
                                <span className="label-text">Password</span>
                            </label>
-                           <input type="text" {...register("password", {
+                           <input type="password" {...register("password", {
                                required: true,
                                minLength: 6,
                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
@@ -110,7 +111,7 @@ const Register = () => {
                            <label className="label">
                                <span className="label-text">Confirm Password</span>
                            </label>
-                           <input type="text" {...register("confirm", { required: true })} placeholder="Confirm Password" className="input input-bordered" />
+                           <input type="password" {...register("confirm", { required: true })} placeholder="Confirm Password" className="input input-bordered" />
                        </div>
                        <div className="form-control">
                            <label className="label">

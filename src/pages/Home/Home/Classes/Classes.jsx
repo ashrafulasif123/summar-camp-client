@@ -9,7 +9,7 @@ const Classes = () => {
     const { data: classes = [] } = useQuery({
         queryKey: ['approvedclass'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/classes?status=approved')
+            const res = await axios.get('https://summer-camp-server-six-iota.vercel.app/classes?status=approved')
             return res.data;
         },
 

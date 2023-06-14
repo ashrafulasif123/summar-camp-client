@@ -48,7 +48,7 @@ const Login = () => {
                     name: loggedUser.displayName,
                     email: loggedUser.email
                 }
-                axios.post('http://localhost:5000/users', setUser)
+                axios.post('https://summer-camp-server-six-iota.vercel.app/users', setUser)
                     .then(data => {
                         Swal.fire({
                             position: 'middle',

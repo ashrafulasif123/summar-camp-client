@@ -74,7 +74,7 @@ const ManageClasses = () => {
                         {/* row 1 */}
                         {
                             adminclass?.map((instclass, index) =>
-                                <tr>
+                                <tr key={instclass?._id}>
                                     <th className='border border-success text-md'>{index + 1}</th>
                                     <td className='border border-success text-md'><img className='rounded-full w-[40px] h-[40px]' src={instclass?.image} alt="" /></td>
                                     <td className='border border-success text-md'>{instclass?.classname}</td>

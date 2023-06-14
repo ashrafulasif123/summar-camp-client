@@ -14,7 +14,7 @@ const PopularInstructor = () => {
                 
 
                 {
-                    instructor?.slice(1, 7).map(ins => <PopularIns key={ins?._id} ins={ins}></PopularIns>)
+                    instructor?.slice(0, 6).map(ins => <PopularIns key={ins?._id} ins={ins}></PopularIns>)
                 }
             </div>
         </div>

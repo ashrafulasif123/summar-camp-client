@@ -20,9 +20,9 @@ const PopularClassPart = ({ popularclass }) => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{classname}</h2>
-                    {/* <p><span className='font-semibold'>Instructor Name:</span> {instructor}</p>
+                    <p><span className='font-semibold'>Enrolled Student:</span> {enrolledstudent}</p>
                 <p><span className='font-semibold'>Available Seats:</span> {seats}</p>
-                <p><span className='font-semibold'>Price: </span>${price}</p> */}
+                {/* <p><span className='font-semibold'>Price: </span>${price}</p> */}
                 </div>
             </motion.div>
         </>

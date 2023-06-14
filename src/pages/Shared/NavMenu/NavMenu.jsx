@@ -1,15 +1,19 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import useInstructor from '../../../hooks/useInstructor';
+import useAdmin from '../../../hooks/useAdmin';
 
 
 
 
 const NavMenu = () => {
-
+    const navigate = useNavigate()
+    const [isInstructor] = useInstructor()
+    const [isAdmin] = useAdmin()
     const { user, logOut, loading } = useContext(AuthContext)
-    if(loading){
+    if (loading) {
         return <div className='text-center'>
             <span className="loading loading-bars loading-lg"></span>
         </div>
@@ -24,13 +28,23 @@ const NavMenu = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                navigate('/login')
             })
     }
     const navitem = <>
         <li><Link className='text-lg' to='/'>Home</Link></li>
         <li><Link className='text-lg' to='/instructors'>Instructors</Link></li>
         <li><Link className='text-lg' to='/classes'>Classes</Link></li>
-        <li><Link className='text-lg' to='/dashboard'>Dashboard</Link></li>
+        {isInstructor &&
+            <li><Link className='text-lg' to='/dashboard/myclass'>Dashboard</Link></li>
+        }
+        {isAdmin &&
+            <li><Link className='text-lg' to='/dashboard/manageusers'>Dashboard</Link></li>
+        }
+        {!isAdmin && !isInstructor &&
+            <li><Link className='text-lg' to='/dashboard/myselectedclass'>Dashboard</Link></li>
+        }
+
         <li><Link className='text-lg' to='/register'>Register </Link></li>
         {
             user
@@ -41,7 +55,7 @@ const NavMenu = () => {
     </>
     return (
         <div className="navbar bg-success text-white font-semibold">
-            
+
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

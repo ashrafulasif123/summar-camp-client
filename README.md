@@ -1,6 +1,6 @@
 My website Name: Sports Exut
 ##
-* Different types of spots are teachinh here such as Cricket, Football, Busketball and Others
+* Different types of spots are teaching here such as Cricket, Football, Busketball and Others
 * In this Project in Client Side for designing i used react js, react router, tailwind css, daisy UI, react icon 
 * I used here axios
 * I also used for authentication firebase authantication and also hide the environment key
