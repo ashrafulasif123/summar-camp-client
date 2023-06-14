@@ -4,14 +4,13 @@ import { motion } from 'framer-motion';
 
 const PopularClassPart = ({ popularclass }) => {
     const { classname, instructor, email, seats, price, image, enrolledstudent, _id } = popularclass;
-    console.log(popularclass)
     return (
         <>
            
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 2.0 }} className={seats === 0 ? 'bg-red-400 text-white card shadow-xl' : 'bg-base-100 card shadow-xl'} >
+                transition={{ duration: 2.0 }}  >
                 <figure className="px-10 pt-10">
                     <motion.div
                         initial={{ scale: 0 }}

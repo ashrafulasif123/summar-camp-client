@@ -15,10 +15,10 @@ const PopularClassesPart = () => {
         },
 
     })
-    console.log(popularclasses)
     return (
         <>
-            <h2 className='text-success text-3xl font-semibold text-center mt-4'>Popular Class</h2>
+            <h2 className='text-success text-3xl font-extrabold text-center mt-4'>Popular Class</h2>
+            <div className="divider"></div>
             <div className='max-w-7xl mx-auto mt-4'>
                 <div className='grid md:grid-cols-3 gap-4'>
                     <Helmet>

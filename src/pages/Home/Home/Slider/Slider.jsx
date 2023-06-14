@@ -15,7 +15,7 @@ const Slider = () => {
                 </div>
                 <div className='absolute top-20 left-20'>
                     <h1 className='text-6xl text-yellow-400'>Cricket</h1>
-                    <p className='w-1/2 text-red-600 text-2xl font-semibold mt-5'>Cricket is a popular sport that originated in England in the late 16th century and is now played in many countries around the world. It is a bat-and-ball game played between two teams of 11 players each. The objective of the game is to score more runs than the opposing team while also getting all the opposition players out.</p>
+                    <p className='w-3/4 md:w-1/2 text-red-600 text-sm md:text-2xl font-semibold mt-5'>Cricket is a popular sport that originated in England in the late 16th century and is now played in many countries around the world. It is a bat-and-ball game played between two teams of 11 players each. The objective of the game is to score more runs than the opposing team while also getting all the opposition players out.</p>
                 </div>
             </div>
             <div id="slide2" className="carousel-item relative w-full">
@@ -26,7 +26,7 @@ const Slider = () => {
                 </div>
                 <div className='absolute top-20 left-20'>
                     <h1 className='text-6xl text-yellow-400'>Football</h1>
-                    <p className='w-1/2 text-red-600 text-2xl font-semibold mt-5'>Football, also known as soccer in some parts of the world, is the most popular sport globally. It is played between two teams, each consisting of 11 players, with the objective of scoring goals by kicking a round ball into the opponent's net</p>
+                    <p className='w-1/2 text-red-600 text-sm md:text-2xl font-semibold mt-5'>Football, also known as soccer in some parts of the world, is the most popular sport globally. It is played between two teams, each consisting of 11 players, with the objective of scoring goals by kicking a round ball into the opponent's net</p>
                 </div>
             </div>
             <div id="slide3" className="carousel-item relative w-full">
